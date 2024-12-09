@@ -10,12 +10,12 @@ La interpretacion para las palabras reservadas como algunas:
 - cast
 - print
 
-# Numeros primos
+# Números primos
 Son los números que solamente pueden ser divididos entre 1 y si mismos
 El 1 no es número primo
 
 # Fibonnaci
-+ Para la sucesion de fibonnaci es la siguiente 
+* Para la sucesion de fibonnaci es la siguiente 
 Cada número se calcula sumando los dos anteriores a él.
 Es decir:
 
