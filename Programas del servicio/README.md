@@ -46,6 +46,7 @@ Python posee lo siguiente para leer archivos
 Es necesario las siguientes librerias
 - import matplotlib.pyplot as plt
 - import numpy as np
+
 Para poder instalarlos en python se hace el siguiente comando en terminal
 
 -   pip install matplotlib
