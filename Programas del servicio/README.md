@@ -57,11 +57,8 @@ Tiene lo siguiente
 - plt.title('Lab DLS') : El titulo de la grafica
 - plt.show() : Como mostrar la grafica
 
-### Grosor de línea
-- plt.plot(x,y,linewidth=4)
-### Color de línea
-- plt.plot(x,y,color='r')
-### El color utilizando una tupla de 3 elementos (R,G,B) en el intervalo [0 1]
-- plt.plot(x,y,color=(0.8,0.9,0))
-### Agregando rejilla
-- plt.grid()
+Se muestra como tabla los comandos extras
+
+|Grosor de línea| Color de línea |El color utilizando (R,G,B) en el intervalo [0 1] | Agregando rejilla |
+| --------- | --------- | --------- | --------- |
+|plt.plot(x,y,linewidth=4)| plt.plot(x,y,color='r') | plt.plot(x,y,color=(0.8,0.9,0)) | plt.grid()|
