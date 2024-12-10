@@ -1,9 +1,17 @@
+#Programa para leer archivos
 
-archvio = open("Programas del servicio\Texto.txt")
+#Funcion Open
+archivo = open("Programas del servicio\Texto.txt")
+#Funcion Read
+print(archivo.read())
 
-print(archvio.read())
+#Para archivos csv
+print(archivo.readline(10))
 
+archivo = open("Programas del servicio\Texto.csv")
 
-archvio = open("Programas del servicio\Texto.csv")
+print(archivo.read())
 
-print(archvio.read())
+#Funcion with, open y readlines
+with open("Programas del servicio\Texto.csv") as archivo2 :
+    print(archivo2.readlines())

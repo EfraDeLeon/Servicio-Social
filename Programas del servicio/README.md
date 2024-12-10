@@ -1,4 +1,4 @@
-# Programas
+## Programas
 
 # Conceptos básicos
 
@@ -41,3 +41,27 @@ Python posee lo siguiente para leer archivos
 - readLines => Leer lineas
 - close => cerrar
 - with => Con
+
+# Graficar en Python
+Es necesario las siguientes librerias
+- import matplotlib.pyplot as plt
+- import numpy as np
+Para poder instalarlos en python se hace el siguiente comando en terminal
+
+-   pip install matplotlib
+
+Tiene lo siguiente
+- plt.plot(x,y) : Valores de x y y para la grafica
+- plt.xlabel('x') :la etiqueta de x sobre el eje x
+- plt.ylabel('y') : la etiqueta de y sobre el eje y
+- plt.title('Lab DLS') : El titulo de la grafica
+- plt.show() : Como mostrar la grafica
+
+# Grosor de línea
+- plt.plot(x,y,linewidth=4)
+# Color de línea
+- plt.plot(x,y,color='r')
+# El color utilizando una tupla de 3 elementos (R,G,B) en el intervalo [0 1]
+- plt.plot(x,y,color=(0.8,0.9,0))
+# Agregando rejilla
+- plt.grid()
