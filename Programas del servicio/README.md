@@ -1,6 +1,6 @@
-## Programas
+# Programas
 
-# Conceptos básicos
+## Conceptos básicos
 
 La interpretacion para las palabras reservadas como algunas:
 
@@ -10,11 +10,11 @@ La interpretacion para las palabras reservadas como algunas:
 - cast
 - print
 
-# Números primos
+## Números primos
 Son los números que solamente pueden ser divididos entre 1 y si mismos
 El 1 no es número primo
 
-# Fibonnaci
+## Fibonnaci
 Para la sucesion de fibonnaci es la siguiente 
 Cada número se calcula sumando los dos anteriores a él.
 Es decir:
@@ -29,7 +29,7 @@ donde:
 - xn−1 es el término anterior (n−1)
 - xn−2 es el anterior a ese (n−2)
 
-# Leer textos
+## Leer textos
 
 - Implementar un codigo que permita leer archivos txt, cvs y CSV
 
@@ -42,7 +42,7 @@ Python posee lo siguiente para leer archivos
 - close => cerrar
 - with => Con
 
-# Graficar en Python
+## Graficar en Python
 Es necesario las siguientes librerias
 - import matplotlib.pyplot as plt
 - import numpy as np
@@ -57,11 +57,11 @@ Tiene lo siguiente
 - plt.title('Lab DLS') : El titulo de la grafica
 - plt.show() : Como mostrar la grafica
 
-# Grosor de línea
+### Grosor de línea
 - plt.plot(x,y,linewidth=4)
-# Color de línea
+### Color de línea
 - plt.plot(x,y,color='r')
-# El color utilizando una tupla de 3 elementos (R,G,B) en el intervalo [0 1]
+### El color utilizando una tupla de 3 elementos (R,G,B) en el intervalo [0 1]
 - plt.plot(x,y,color=(0.8,0.9,0))
-# Agregando rejilla
+### Agregando rejilla
 - plt.grid()
