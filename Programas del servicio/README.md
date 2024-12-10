@@ -30,3 +30,14 @@ donde:
 - xn−2 es el anterior a ese (n−2)
 
 # Leer textos
+
+- Implementar un codigo que permita leer archivos txt, cvs y CSV
+
+Python posee lo siguiente para leer archivos
+
+- open => Abrir
+- read => Leer
+- readLine => Leer linea
+- readLines => Leer lineas
+- close => cerrar
+- with => Con
