@@ -29,3 +29,4 @@ donde:
 - xn−1 es el término anterior (n−1)
 - xn−2 es el anterior a ese (n−2)
 
+# Leer textos
