@@ -7,7 +7,7 @@ datos = []
 datos2 = []
 datos3 = []
 i=0
-with open("Programas del servicio\Texto.csv") as archivo:
+with open("Programas del servicio/1° Bimestre/Diciembre\Texto.csv") as archivo:
     datos = [line.rstrip('\n').split('/') for line in archivo]
     print(datos) 
     while len(datos2) != len(datos):
