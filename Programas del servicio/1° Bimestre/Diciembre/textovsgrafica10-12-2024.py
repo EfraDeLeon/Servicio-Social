@@ -34,8 +34,8 @@ print(datos2)
 print(datos3)
 
 #Graficando
-x = datos2
-y = datos3
+x = [int(valor) for valor in datos2]
+y = [int(valor) for valor in datos3]
 
 plt.plot(x,y)
 plt.xlabel('x | Indice')
