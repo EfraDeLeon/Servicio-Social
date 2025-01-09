@@ -49,4 +49,3 @@ ax[0,0].set_title('Canal 1 HN')
 ## Para los archivos y seleccionar
 
 datos = [line.rstrip('\n').split('\t') for line in archivo]
-
