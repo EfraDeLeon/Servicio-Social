@@ -1,16 +1,12 @@
-# Sacar los valores del txt y colocarlos en columna y graficarlos
-
 import matplotlib.pyplot as plt
 import numpy as np
-#Listas a llenar y un contador
-datos = []
-datos2 = []
-datos3 = []
-datos4 = []
-datos5 = []
-i=24
 
-with open("Programas del servicio/1° Bimestre/Enero\data_utc_24-04-08_1303.lvm") as archivo:
+# Listas para los datos
+datos2, datos3, datos4, datos5 = [], [], [], []
+i = 24  # Inicio del índice para datos
+
+# Leer datos desde el archivo
+with open("Programas del servicio/1° Bimestre/Enero/data_utc_24-04-08_1303.lvm") as archivo:
     datos = [line.rstrip('\n').split('\t') for line in archivo]
     datos2.append(datos[23][0])
     datos3.append(datos[23][1])
@@ -25,79 +21,78 @@ with open("Programas del servicio/1° Bimestre/Enero\data_utc_24-04-08_1303.lvm"
         if i == 76723:
             break
 
-print(len(datos))
-print(datos2[1299])
-print(datos3[:10])
-print(datos5[:10])
-print(len(datos2))
+# Convertir los valores a flotantes
+x = [float(valor) for valor in datos2][:5000]
+y1 = [float(valor) for valor in datos3][:5000]
+y2 = [float(valor) for valor in datos4][:5000]
+y3 = [float(valor) for valor in datos5][:5000]
 
-#Conviertiendo los valores
-x = [float(valor) for valor in datos2]
-#x = x1[:130]
-y1 = [float(valor) for valor in datos3]
-#y1_130 = y1[:130]
-y2 = [float(valor) for valor in datos4]
-#y2_130 = y2[:130]
-y3 = [float(valor) for valor in datos5]
-#y3_130 = y3[:130]
+# Función para calcular la Transformada de Fourier Discreta (DFT)
+def dft_manual(signal):
+    """
+    Calcula la Transformada de Fourier Discreta (DFT) de manera manual.
+    :param signal: Señal en el dominio del tiempo (lista o array).
+    :return: Transformada de Fourier (valores complejos).
+    """
+    N = len(signal)
+    X = []  # Aquí se almacenarán los valores de la DFT
+    for k in range(N):
+        X_k = 0
+        for n in range(N):
+            X_k += signal[n] * np.exp(-2j * np.pi * k * n / N)
+        X.append(X_k)
+    return np.array(X)
 
-#Transformada de Fourir de los datos anteriores
+# Calcular la frecuencia de muestreo
+if len(x) > 1:
+    fs = 1 / (x[1] - x[0])  # Intervalo de tiempo entre muestras
+else:
+    raise ValueError("La lista 'x' no tiene suficientes datos para calcular fs.")
 
-#Frecuencia
-fs = 1/ (x[1]-x[0])
-frecuencia = np.fft.fftfreq(len(y1),d=1/fs)
-frecuencia2 = np.fft.fftfreq(len(y2),d=1/fs)
-frecuencia3 = np.fft.fftfreq(len(y3),d=1/fs)
+# Calcular las frecuencias correspondientes
+frecuencia = np.fft.fftfreq(len(y1), d=1/fs)
 
-mask = frecuencia >= 0
-mask1 = frecuencia2 >= 0 
-mask3 = frecuencia3 >= 0 
+# Transformada de Fourier Discreta (DFT) manual
+Fourier1 = dft_manual(y1)
+Fourier2 = dft_manual(y2)
+Fourier3 = dft_manual(y3)
 
-Positivas = frecuencia[mask]
-Positivas2 = frecuencia2[mask]
-Positivas3 = frecuencia3[mask]
-
-print(Positivas)
-
-#Fourier
-Fourier = np.fft.fft(y1) 
-Fourier2 = np.fft.fft(y2) 
-Fourier3 = np.fft.fft(y3) 
-Magnitud1 = np.abs(Fourier)
+# Magnitudes
+Magnitud1 = np.abs(Fourier1)
 Magnitud2 = np.abs(Fourier2)
-Magnitud3 = np.abs(Fourier3) 
+Magnitud3 = np.abs(Fourier3)
 
-#Graficando
-fig = plt.figure()
-ax = fig.subplots(3,2)
-ax[0,0].plot(x,y1)
-ax[0,0].set_xlabel('x')
-ax[0,0].set_ylabel('y')
-ax[0,0].set_title('Canal 1 HN')
+# Filtrar frecuencias positivas
+mask = frecuencia >= 0
+frecuencia = frecuencia[mask]
+Magnitud1 = Magnitud1[mask]
+Magnitud2 = Magnitud2[mask]
+Magnitud3 = Magnitud3[mask]
 
-ax[0,1].plot(x,y2,'y')
-ax[0,1].set_xlabel('x')
-ax[0,1].set_ylabel('y')
-ax[0,1].set_title('Canal 2 HeW')
+# Graficar las señales originales y sus transformadas
+fig, ax = plt.subplots(3, 2, figsize=(12, 10))
 
-ax[1,0].plot(x,y3, 'g')
-ax[1,0].set_xlabel('x')
-ax[1,0].set_ylabel('y')
-ax[1,0].set_title('Canal 3 Ez')
+# Señales originales
+ax[0, 0].plot(x, y1)
+ax[0, 0].set_title("Canal 1 (HN)")
+ax[0, 1].plot(x, y2, 'y')
+ax[0, 1].set_title("Canal 2 (HeW)")
+ax[1, 0].plot(x, y3, 'g')
+ax[1, 0].set_title("Canal 3 (Ez)")
 
-ax[1,1].plot(Positivas,Magnitud1[:len(Magnitud1)//2])
-ax[1,1].set_xlabel('x')
-ax[1,1].set_ylabel('y')
-ax[1,1].set_title('Transformada de Fourier de Canal 1')
-ax[1,1].grid()
+# Transformadas de Fourier
+ax[1, 1].plot(frecuencia, Magnitud1)
+ax[1, 1].set_title("Transformada de Fourier Discreta - Canal 1")
+ax[2, 0].plot(frecuencia, Magnitud2, 'y')
+ax[2, 0].set_title("Transformada de Fourier Discreta - Canal 2")
+ax[2, 1].plot(frecuencia, Magnitud3, 'g')
+ax[2, 1].set_title("Transformada de Fourier Discreta - Canal 3")
 
-ax[2,0].plot(Positivas2,Magnitud2[:len(Magnitud2)//2],'y')
-ax[2,0].set_xlabel('x')
-ax[2,0].set_ylabel('y')
-ax[2,0].set_title('Transformada de Fourier de Canal 2')
+# Ajustes generales
+for a in ax.flatten():
+    a.set_xlabel("Frecuencia (Hz)" if "Transformada" in a.get_title() else "Tiempo (s)")
+    a.set_ylabel("Magnitud" if "Transformada" in a.get_title() else "Amplitud")
+    a.grid()
 
-ax[2,1].plot(Positivas3,Magnitud3[:len(Magnitud3)//2], 'g')
-ax[2,1].set_xlabel('x')
-ax[2,1].set_ylabel('y')
-ax[2,1].set_title('Transformada de Fourier de Canal 3')
+plt.tight_layout()
 plt.show()

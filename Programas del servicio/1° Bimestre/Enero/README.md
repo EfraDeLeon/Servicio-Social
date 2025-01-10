@@ -24,7 +24,9 @@ valores_x = range(len(valores_y_int))
 - 8-‘np.fft.rfft()’: Calcula la Transformada de Fourier discreta de valores reales.
 
 - 9-‘np.fft.irfft()’: Calcula la Transformada Inversa de Fourier discreta para valores reales
+## Para convertir el valor de Fourier necesita
 
+- np.abs(Fourier1)
 
 ## Para seleccionar una cantidad exacta de una lista se usa lo siguiente
 
@@ -49,3 +51,20 @@ ax[0,0].set_title('Canal 1 HN')
 ## Para los archivos y seleccionar
 
 datos = [line.rstrip('\n').split('\t') for line in archivo]
+
+## Fourier de manera manual
+
+def dft_manual(signal):
+    """
+    Calcula la Transformada de Fourier Discreta (DFT) de manera manual.
+    :param signal: Señal en el dominio del tiempo (lista o array).
+    :return: Transformada de Fourier (valores complejos).
+    """
+    N = len(signal)
+    X = []  # Aquí se almacenarán los valores de la DFT
+    for k in range(N):
+        X_k = 0
+        for n in range(N):
+            X_k += signal[n] * np.exp(-2j * np.pi * k * n / N)
+        X.append(X_k)
+    return np.array(X)
