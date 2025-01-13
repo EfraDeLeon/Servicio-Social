@@ -80,4 +80,60 @@ def dft_manual(signal):
         X.append(X_k)
 
     return np.array(X)
-    
+
+
+## En el apartado de Program de Foruier
+
+Es una implemtancion de todo lo aprendido anteriormente, donde se implementa lo siguiente:
+
+- Preguntar el nombre del archivo a procesar
+- Preguntar sis e requiere el espectro de: 
+|1 seg -> 130 muestras | 1 min / 60 seg -> 7800 muestras | 5 min -> 39000 muestras| todo el archivo -> 78000 muestras
+
+- Hacer la obtencion del espectro con la funcion python o con el algoritmo implementado de Fourier
+
+## Tkinter
+
+|Widget|Descripción|
+|-------|------|
+|Label	|Muestra texto o imágenes estáticas.|
+|Button	|Botón interactivo que ejecuta una acción al hacer clic.|
+|Entry	|Campo de entrada de texto de una sola línea.|
+|Text	|Cuadro de texto de varias líneas.|
+|Frame	|Contenedor para agrupar otros widgets.|
+|Canvas	|Área para gráficos, formas, líneas, imágenes, etc.|
+|Checkbutton|	Casilla de verificación (checkbox).|
+|Radiobutton|	Botones de opción (radio buttons) para seleccionar una sola opción.|
+|Scale|	Barra deslizante para seleccionar un valor numérico.|
+|Spinbox|	Campo de entrada con flechas para incrementar o decrementar un valor.|
+|Scrollbar|	Barra de desplazamiento vertical u horizontal.|
+|Menu|	Menú desplegable o de opciones.|
+|Listbox|	Lista de opciones para seleccionar uno o varios elementos.|
+|Combobox|	Menú desplegable (necesita el módulo ttk).|
+|Progressbar|	Barra de progreso (necesita el módulo ttk).|
+|Messagebox	|Ventana emergente de mensajes (necesita from tkinter import messagebox).|
+
+Documentacion:
+- https://docs.python.org/3/library/tkinter.html
+
+## Para calcular la ventana
+
+ventana = tk.Tk()
+ventana.title("Programa para lvm")
+
+ancho_ventana = 400
+alto_ventana = 300
+
+ancho_pantalla = ventana.winfo_screenwidth()
+alto_pantalla = ventana.winfo_screenheight()
+
+pos_x = (ancho_pantalla // 2) - (ancho_ventana // 2)
+pos_y = (alto_pantalla // 2) - (alto_ventana // 2)
+
+ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
+
+ventana.mainloop()
+## Variables
+
+Global sirve para mantener los datos en todo el programa
+variables normales son mientras estan en la funcion
