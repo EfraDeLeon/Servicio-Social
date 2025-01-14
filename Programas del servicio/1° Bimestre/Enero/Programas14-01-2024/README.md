@@ -63,11 +63,11 @@ Para sus ejes esta escalada con sus límites x en 0 a 6 y para y de 0 a 6 y por 
 
 ### Instalar las librerías
 
-|Librerías | Comando para instalar |
-|---------|-----------------------|
-| numpy | pip install numpy|
-| scipy | pip install scipy|
-| sympy | pip install sympy|
-| matplotlib | pip install matplotlib|
+|Librerías | Comando para instalar | Documentación |
+|---------|-----------------------|----------------|
+| numpy | pip install numpy| https://numpy.org/devdocs/user/index.html#user |
+| scipy | pip install scipy| https://docs.scipy.org/doc/scipy/ |
+| sympy | pip install sympy| https://docs.sympy.org/latest/index.html |
+| matplotlib | pip install matplotlib| https://matplotlib.org/stable/index.html |
 
-
+En el archivo de FuncionesExtra.py vienen funciones extra de numpy, scipy y sympy.
