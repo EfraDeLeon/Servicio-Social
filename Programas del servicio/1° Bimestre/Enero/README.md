@@ -136,4 +136,5 @@ ventana.mainloop()
 ## Variables
 
 Global sirve para mantener los datos en todo el programa
+
 variables normales son mientras estan en la funcion
