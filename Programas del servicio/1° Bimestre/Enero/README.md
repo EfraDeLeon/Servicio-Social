@@ -53,7 +53,7 @@ ax[0,0].set_title('Canal 1 HN')
 datos = [line.rstrip('\n').split('\t') for line in archivo]
 
 ## Fourier de manera manual
-
+````
 def dft_manual(signal):
 
     """
@@ -80,7 +80,7 @@ def dft_manual(signal):
         X.append(X_k)
 
     return np.array(X)
-
+````
 
 ## En el apartado de Program de Foruier
 
@@ -117,7 +117,7 @@ Documentacion:
 - https://docs.python.org/3/library/tkinter.html
 
 ## Para calcular la ventana
-
+````
 ventana = tk.Tk()
 ventana.title("Programa para lvm")
 
@@ -133,6 +133,8 @@ pos_y = (alto_pantalla // 2) - (alto_ventana // 2)
 ventana.geometry(f"{ancho_ventana}x{alto_ventana}+{pos_x}+{pos_y}")
 
 ventana.mainloop()
+````
+
 ## Variables
 
 Global sirve para mantener los datos en todo el programa
