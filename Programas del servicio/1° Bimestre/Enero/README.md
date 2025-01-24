@@ -140,3 +140,31 @@ ventana.mainloop()
 Global sirve para mantener los datos en todo el programa
 
 variables normales son mientras estan en la funcion
+
+# Java
+## Informacion
+
+https://docs.oracle.com/javase/tutorial/java/concepts/ 
+
+## Comandos
+### Ciclos
+````
+for (int i = 0; i < a; i++){
+
+}
+````
+### Print
+````
+System.out.println(" " + a + " ");
+````
+### Variables
+````
+int one = 0, two = 1;
+````
+### Métodos
+````
+		// fibonnaci(a);  este se usa en la funcion principal para llamarlo y podemos darle variables
+        public static void (Nombre)(int a){
+
+        }
+````
