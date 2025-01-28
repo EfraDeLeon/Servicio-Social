@@ -145,6 +145,8 @@ variables normales son mientras estan en la funcion
 ## Informacion
 
 https://docs.oracle.com/javase/tutorial/java/concepts/ 
+https://programandoenjava.com/diferencia-entre-integer-y-int-en-java/#:~:text=Un%20int%20es%20un%20tipo,en%20int%20seg%C3%BAn%20el%20requisito.
+https://codegym.cc/es/groups/posts/es.668.java-extiende-la-palabra-clave-con-ejemplos
 
 ## Comandos
 ### Ciclos
@@ -168,3 +170,5 @@ int one = 0, two = 1;
 
         }
 ````
+
+
