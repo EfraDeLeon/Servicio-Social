@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lanza la pera 🍐</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(to top, #ffe4e1, #fff0f5);
+      font-family: 'Comic Sans MS', cursive;
+    }
+
+    .scene {
+	  position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .pera {
+      position: absolute;
+      width: 100px;
+      bottom: 10px;
+      left: 50px;
+      transition: transform 0.3s ease;
+    }
+
+    .message {
+      position: absolute;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      color: #c2185b;
+      background: #fff0f5cc;
+      padding: 10px 20px;
+      border-radius: 12px;
+      display: none;
+    }
+
+    .button {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      background-color: #ec407a;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .juice {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(ellipse at center, #ffc0cb 0%, transparent 70%);
+      border-radius: 50%;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .audience {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      font-size: 2rem;
+      text-align: center;
+      background: #ffebee80;
+    }
+  </style>
+</head>
+<body>
+  <div class="scene">
+    <img src="https://cdn.discordapp.com/attachments/1107833971145969664/1371248442080366672/pngtree-cheerful-pear-with-large-eyes-png-image_13132531.png?ex=68227221&is=682120a1&hm=bdc293058e023046f67ff83e22ea49aa5fdc3d60464f67d099e95b5b11b05710&" class="pera" id="pera" />
+    <div class="message" id="message">¡Wuuuush! 🍐</div>
+    <div class="juice" id="juice"></div>
+    <button class="button" onclick="launchPera()">¡Lanza la pera!</button>
+    <div class="audience">🍓🍌🍎 ¡Vamos pera, tú puedes! 🍒🍇🍊</div>
+  </div>
+
+  <script>
+    const pera = document.getElementById("pera");
+    const message = document.getElementById("message");
+    const juice = document.getElementById("juice");
+    let inFlight = false;
+
+    const messages = [
+      "¡Allá voy! 🍐💨",
+      "¡Pera voladoraaa! 🎯",
+      "¡Yo te elijo! 🍐✨",
+      "¡No me detendrás! 🕊️",
+      "¡Weeeee! 🍐🌀",
+      "¡Hasta el infinito y más allá! 🚀",
+      "¡Zuuuum! 💚"
+    ];
+
+    function launchPera() {
+      if (inFlight) return;
+      inFlight = true;
+
+      const scene = document.querySelector(".scene");
+      const startX = 50;
+      const endX = window.innerWidth - 100;
+      const peakHeight = Math.random() * 200 + 300; // salto más grande
+
+      const duration = 1500 + Math.random() * 500;
+      const startTime = performance.now();
+
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      message.textContent = msg;
+      message.style.display = "block";
+
+      function animate(time) {
+        const t = (time - startTime) / duration;
+        if (t > 1) {
+          // al llegar al final
+          message.style.display = "none";
+          pera.style.left = startX + "px";
+          pera.style.bottom = "10px";
+          inFlight = false;
+          // jugo
+          juice.style.left = endX - 20 + "px";
+          juice.style.bottom = "10px";
+          juice.style.opacity = 1;
+          setTimeout(() => juice.style.opacity = 0, 400);
+          return;
+        }
+
+        const x = startX + (endX - startX) * t;
+        const y = 10 + peakHeight * 4 * t * (1 - t); // parábola
+
+        pera.style.left = x + "px";
+        pera.style.bottom = y + "px";
+        requestAnimationFrame(animate);
+      }
+
+      requestAnimationFrame(animate);
+    }
+  </script>
+</body>
+</html>
